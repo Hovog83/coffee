@@ -1,25 +1,23 @@
 package com.company;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class Main {
 
+
     public static void main(String[] args) {
-        String[] cmdArray =  {"Starting to make a coffee", "Grinding coffee beans", "Boiling water", "Mixing boiled water with crushed coffee beans", "Pouring coffee into the cup", "Pouring some milk into the cup", "Coffee is ready!"};
-        for (int i = 0; i < cmdArray.length; i++) {
-            int delay = 1500*(i+1);
-            String cmd = cmdArray[i];
-            setTimeout(() -> System.out.println(cmd),delay);
-        }
+
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        String text = "For %s cups of coffee you will need:\n %s ml of water\n %s ml of milk\n %s g of coffee beans\n";
+        Coffe coffe = new  Coffe();
+        coffe.setCount(Integer.parseInt(input));
+        String stringFormatConcat = String.format(text, input,coffe.getWaterCount(),coffe.getMilkCount(),coffe.getCoffeeCount());
+        System.out.printf(stringFormatConcat);
+        in.close();
+
     }
-    public static void setTimeout(Runnable runnable, int delay){
-        new Thread(() -> {
-            try {
-                Thread.sleep(delay);
-                runnable.run();
-            }
-            catch (Exception e){
-                System.err.println(e);
-            }
-        }).start();
-    }
+
 }
 
