@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 abstract class CoffeAbstract {
 
-    private Integer water;
-    private Integer milk;
-    private Integer coffee;
-    private Integer money;
+    private Integer water = 0;
+    private Integer milk = 0;
+    private Integer coffee = 0;
+    private Integer money = 0;
 
     public void draw(CoffeResurs coffe)  {
         HashMap<String, Integer> resurs = coffe.getCoffeeResurs();
